@@ -18,11 +18,12 @@ $plant_data=$plant_query->fetchAll();
 
 <section class='entries'>
     <div class='container'>
+        <h2>Plant Collection:</h2>
         <div class='entry_container'>
                 <?php
                 foreach ($plant_data as $entry) {
                     echo "<div class='entry_box'>
-                                <div class='entry'>" . $entry['science_name'] . "</div><div class='entry'>" . $entry['name'] . "</div><div class='entry'>" . $entry['type'] . "</div></div>";
+                                <div class='entry science_name'>" . $entry['science_name'] . "</div><div class='entry'>" . $entry['name'] . "</div><div class='entry'>" . $entry['type'] . "</div></div>";
                 }
                 ?>
         </div>
