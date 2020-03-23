@@ -7,7 +7,7 @@
 #
 # Host: 127.0.0.1 (MySQL 5.7.29)
 # Database: collection_app
-# Generation Time: 2020-03-23 13:55:54 +0000
+# Generation Time: 2020-03-23 14:28:06 +0000
 # ************************************************************
 
 
@@ -20,6 +20,37 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 
+# Dump of table plant_types
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `plant_types`;
+
+CREATE TABLE `plant_types` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `type` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+LOCK TABLES `plant_types` WRITE;
+/*!40000 ALTER TABLE `plant_types` DISABLE KEYS */;
+
+INSERT INTO `plant_types` (`id`, `type`)
+VALUES
+	(1,'tree'),
+	(2,'shrub'),
+	(3,'rose'),
+	(4,'climber/Wall shrub'),
+	(5,'perennial'),
+	(6,'Annual/Biennial/Bedding'),
+	(7,'Rock plant'),
+	(8,'Bulb'),
+	(9,'Water/Bog plant'),
+	(10,'Tender/Exotic plant');
+
+/*!40000 ALTER TABLE `plant_types` ENABLE KEYS */;
+UNLOCK TABLES;
+
+
 # Dump of table plants
 # ------------------------------------------------------------
 
@@ -29,7 +60,7 @@ CREATE TABLE `plants` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `science_name` varchar(255) DEFAULT NULL,
   `name` varchar(255) DEFAULT NULL,
-  `type` varchar(255) DEFAULT NULL,
+  `type` int(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -38,12 +69,16 @@ LOCK TABLES `plants` WRITE;
 
 INSERT INTO `plants` (`id`, `science_name`, `name`, `type`)
 VALUES
-	(1,'Querbus robur','English Oak','tree'),
-	(2,'Davidia involucrata','Dove tree,  Handkerchief tree','tree'),
-	(3,'Populus x canescens','Gray poplar','tree'),
-	(4,'Acer platanoides','Crimson King','tree'),
-	(5,'Fraxinus excelsior','Jaspidea','tree'),
-	(6,'Aesculus chinensis','Chinese horse-chestnut','tree');
+	(1,'Querbus robur','English Oak',1),
+	(2,'Davidia involucrata','Dove tree,  Handkerchief tree',1),
+	(3,'Populus x canescens','Gray poplar',1),
+	(4,'Acer platanoides','Crimson King',1),
+	(5,'Fraxinus excelsior','Jaspidea',1),
+	(6,'Aesculus chinensis','Chinese horse-chestnut',1),
+	(7,'Osmanthus delavayi','Delavay osmanthus',2),
+	(8,'Rosa Jaqueline du Pre','Harwanna',3),
+	(9,'Clematis Arctic Queen','Evitwo',4),
+	(10,'Romneya coulteri','Tree poppy',5);
 
 /*!40000 ALTER TABLE `plants` ENABLE KEYS */;
 UNLOCK TABLES;
