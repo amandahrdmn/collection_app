@@ -1,0 +1,52 @@
+* {
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Helvetica, Verdana;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+body {                 	/* removes default padding and margin around the ouside of the entire webpage */
+    margin: 0;
+    padding: 0;
+    background-color: #f5f5c9;
+}
+
+@-ms-viewport {
+    width: device-width;
+}
+
+.entries {
+    display: flex;
+    justify-content: center;
+}
+
+.entries .container {
+    width: 70%;
+    background-color: #f5eac9;
+}
+
+.entry_container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.entry_box {
+    margin: 10px;
+    padding-bottom: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    width: 200px;
+    height: 200px;
+    background-color: #c9d4f5;
+    border-radius: 5px;
+}
+
+.entry {
+    font-size: 1.5rem;
+}

@@ -7,7 +7,7 @@
 #
 # Host: 127.0.0.1 (MySQL 5.7.29)
 # Database: collection_app
-# Generation Time: 2020-03-23 14:51:24 +0000
+# Generation Time: 2020-03-23 15:30:59 +0000
 # ************************************************************
 
 
@@ -36,16 +36,16 @@ LOCK TABLES `plant_types` WRITE;
 
 INSERT INTO `plant_types` (`id`, `type`)
 VALUES
-	(1,'tree'),
-	(2,'shrub'),
-	(3,'rose'),
-	(4,'Climber/Wall shrub'),
-	(5,'perennial'),
+	(1,'Tree'),
+	(2,'Shrub'),
+	(3,'Rose'),
+	(4,'Climber/Wall Shrub'),
+	(5,'Perennial'),
 	(6,'Annual/Biennial/Bedding'),
-	(7,'Rock plant'),
+	(7,'Rock Plant'),
 	(8,'Bulb'),
-	(9,'Water/Bog plant'),
-	(10,'Tender/Exotic plant');
+	(9,'Water/Bog Plant'),
+	(10,'Tender/Exotic Plant');
 
 /*!40000 ALTER TABLE `plant_types` ENABLE KEYS */;
 UNLOCK TABLES;
