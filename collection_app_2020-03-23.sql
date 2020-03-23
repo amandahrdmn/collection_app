@@ -7,7 +7,7 @@
 #
 # Host: 127.0.0.1 (MySQL 5.7.29)
 # Database: collection_app
-# Generation Time: 2020-03-23 14:28:06 +0000
+# Generation Time: 2020-03-23 14:51:24 +0000
 # ************************************************************
 
 
@@ -39,7 +39,7 @@ VALUES
 	(1,'tree'),
 	(2,'shrub'),
 	(3,'rose'),
-	(4,'climber/Wall shrub'),
+	(4,'Climber/Wall shrub'),
 	(5,'perennial'),
 	(6,'Annual/Biennial/Bedding'),
 	(7,'Rock plant'),
