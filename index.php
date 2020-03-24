@@ -3,11 +3,9 @@ require_once('functions.php');
 
 $plant_data = getDB();
 
-$DBerror = DBCheck($plant_data);
+echo DBCheck($plant_data);
 
-if (!empty($DBerror)) {
-    echo $DBerror;
-}
+
 
 ?>
 <!doctype html>
