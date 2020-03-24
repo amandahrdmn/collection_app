@@ -16,25 +16,25 @@ class collection_appTest extends TestCase
     }
 
     public function testErrorDBCheckStringInput() {
-        $expected = 'Database error. Please refresh page.';
+        $expected = 'Unexpected error. Please refresh page.';
         $actual = DBCheck('test');
         $this->assertEquals($expected,$actual);
     }
 
     public function testErrorDBCheckBoolInput() {
-        $expected = 'Database error. Please refresh page.';
+        $expected = 'Unexpected error. Please refresh page.';
         $actual = DBCheck(true);
         $this->assertEquals($expected,$actual);
     }
 
     public function testErrorDBCheckIntInput() {
-        $expected = 'Database error. Please refresh page.';
+        $expected = 'Unexpected error. Please refresh page.';
         $actual = DBCheck(1);
         $this->assertEquals($expected,$actual);
     }
 
     public function testErrorDBCheckFloatInput() {
-        $expected = 'Database error. Please refresh page.';
+        $expected = 'Unexpected error. Please refresh page.';
         $actual = DBCheck(1.1);
         $this->assertEquals($expected,$actual);
     }
@@ -53,7 +53,7 @@ class collection_appTest extends TestCase
      }
 
     public function testErrorMakePlantEntryTileTooShort() {
-        $expected = 'There is not enough data for this entry';
+        $expected = 'There is not enough information given for this type of entry.';
         $actual = makePlantEntryTile(['id' => "1",
                                       'science_name' => "Querbus robur",
                                       'name' => "English Oak"]);

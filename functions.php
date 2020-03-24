@@ -19,7 +19,7 @@ function DBCheck($data): string {
         return 'There is no data for this collection.';
     } else {
         if (gettype($data) !== 'array') {
-            return 'Database error. Please refresh page.';
+            return 'Unexpected error. Please refresh page.';
         } else {
             return ' ';
         }
@@ -30,7 +30,7 @@ function makePlantEntryTile(array $entry): string {
     if (empty($entry)) {
         return 'There is no data for this entry';
     } elseif (count($entry) < 4) {
-        return 'There is not enough data for this entry';
+        return 'There is not enough information given for this type of entry.';
     } elseif (!empty($entry)) {
         return "<div class='entry_box'>
                         <div class='entry science_name'>" . $entry['science_name'] . "</div>
