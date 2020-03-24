@@ -21,7 +21,7 @@ function DBCheck($data): string {
         if (gettype($data) !== 'array') {
             return 'Unexpected error. Please refresh page.';
         } else {
-            return ' ';
+            return '';
         }
     }
 }

@@ -5,7 +5,7 @@ $plant_data = getDB();
 
 $DBerror = DBCheck($plant_data);
 
-if ($DBerror !== ' ') {
+if (empty($DBerror)) {
     echo $DBerror;
 }
 
