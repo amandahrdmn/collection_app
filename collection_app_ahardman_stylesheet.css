@@ -1,6 +1,5 @@
 * {
     box-sizing: border-box;
-    font-family: 'Segoe UI', Helvetica, Verdana;
 }
 
 html {
@@ -15,6 +14,13 @@ body {                 	/* removes default padding and margin around the ouside 
 
 @-ms-viewport {
     width: device-width;
+}
+
+h2 {
+    margin: 20px 0px 10px 0px;
+    padding: 0px 30px;
+    font-size: 3rem;
+    text-align: center;
 }
 
 .entries {
@@ -48,5 +54,24 @@ body {                 	/* removes default padding and margin around the ouside 
 }
 
 .entry {
+    font-size: 1.25rem;
+}
+
+.entry.science_name {
+    font-style: italic;
     font-size: 1.5rem;
+}
+
+@media only screen and (max-width: 300px) {
+    h2 {
+        font-size: 1.5rem;
+    }
+
+    .entry.science_name {
+        font-size: 1.25rem;
+    }
+
+    .entry {
+        font-size: 1rem;
+    }
 }
