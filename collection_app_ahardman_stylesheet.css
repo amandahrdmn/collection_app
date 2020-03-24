@@ -1,0 +1,82 @@
+* {
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 62.5%;
+    height: 100%;
+}
+
+body {                 	/* removes default padding and margin around the ouside of the entire webpage */
+    margin: 0;
+    padding: 0;
+    background-color: #f5f5c9;
+    height: 100%;
+}
+
+@-ms-viewport {
+    width: device-width;
+}
+
+h2 {
+    margin: 20px 0px 10px 0px;
+    padding: 0px 30px;
+    font-size: 3rem;
+    text-align: center;
+}
+
+.entries {
+    display: flex;
+    justify-content: center;
+    height: 100%;
+}
+
+.entries .container {
+    width: 70%;
+    background-color: #f5eac9;
+    height: 100%;
+}
+
+.entry_container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    background-color: #f5eac9;
+}
+
+.entry_box {
+    margin: 10px;
+    padding-bottom: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    width: 200px;
+    height: 200px;
+    background-color: #c9d4f5;
+    border-radius: 5px;
+}
+
+.entry {
+    font-size: 1.25rem;
+}
+
+.entry.science_name {
+    font-style: italic;
+    font-size: 1.5rem;
+}
+
+@media only screen and (max-width: 300px) {
+    h2 {
+        font-size: 1.5rem;
+    }
+
+    .entry.science_name {
+        font-size: 1.25rem;
+    }
+
+    .entry {
+        font-size: 1rem;
+    }
+}
