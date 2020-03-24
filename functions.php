@@ -1,6 +1,6 @@
 <?php
 
-function getDB () {
+function getDB() {
     $db = new PDO('mysql:host=DB;dbname=collection_app', 'root', 'password');
     $db->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
 
@@ -8,24 +8,23 @@ function getDB () {
     $plant_query->execute();
 
     $plant_data = $plant_query->fetchAll();
-    if (!empty($plant_data)) {
-        if (gettype($plant_data) === 'array') {
-            return $plant_data;
-        } else {
-             return 'Unexpected error. Please refresh page.';
-         }
-    } else {
+
+    return $plant_data;
+}
+
+function DBCheck($data): string {
+    if (empty($data)) {
         return 'There is no data for this collection.';
+    } else {
+        if (gettype($data) !== 'array') {
+            return 'Unexpected error. Please refresh page.';
+        } else {
+            return ' ';
+        }
     }
 }
 
-function DBCheck ($data) {
-    if (gettype($data) !== 'array') {
-        echo $data;
-    }
-}
-
-function makePlantEntryTile (array $entry): string {
+function makePlantEntryTile(array $entry): string {
     if (empty($entry)) {
         return 'There is no data for this entry';
     } elseif (count($entry) < 4) {

@@ -1,12 +1,13 @@
 <?php
+require_once('functions.php');
 
-session_start();
+$plant_data = getDB();
 
-require('functions.php');
+$DBerror = DBCheck($plant_data);
 
-$plant_data = getDB ();
-
-DBCheck($plant_data);
+if ($DBerror !== ' ') {
+    echo $DBerror;
+}
 
 ?>
 <!doctype html>
