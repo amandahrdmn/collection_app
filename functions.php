@@ -12,25 +12,19 @@ function getDB () {
         if (gettype($plant_data) === 'array') {
             return $plant_data;
         } else {
-             echo 'Unexpected error. Please refresh page.';
+             return 'Unexpected error. Please refresh page.';
          }
     } else {
-        echo 'There is no data for this collection.';
+        return 'There is no data for this collection.';
     }
 }
 
-function makeAllTiles ($data) {
-    foreach ($data as $entry) {
-        makePlantEntryTile($entry);
-    }
-}
-
-function makePlantEntryTile (array $entry) {
+function makePlantEntryTile (array $entry): string {
     if (empty($entry)) {
-        echo 'There is no data for this entry';
+        return 'There is no data for this entry';
     } elseif (count($entry) < 4) {
-        echo 'There is not enough data for this entry';
+        return 'There is not enough data for this entry';
     } elseif (!empty($entry)) {
-        echo "<div class='entry_box'><div class='entry science_name'>" . $entry['science_name'] . "</div><div class='entry'>" . $entry['name'] . "</div><div class='entry'>" . $entry['type'] . "</div></div>";
+        return "<div class='entry_box'><div class='entry science_name'>" . $entry['science_name'] . "</div><div class='entry'>" . $entry['name'] . "</div><div class='entry'>" . $entry['type'] . "</div></div>";
     }
 }

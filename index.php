@@ -19,9 +19,11 @@ $plant_data = getDB ();
 <section class='entries'>
     <div class='container'>
         <h2>Plant Collection:</h2>
-        <div class='entry_container'>
+        <div class='entry_container')>
                 <?php
-                    makeAllTiles($plant_data);
+                    foreach ($plant_data as $entry) {
+                        echo makePlantEntryTile($entry);
+                    }
                 ?>
         </div>
     </div>
