@@ -1,6 +1,5 @@
 * {
     box-sizing: border-box;
-    font-family: 'Segoe UI', Helvetica, Verdana;
 }
 
 html {
@@ -19,7 +18,7 @@ body {                 	/* removes default padding and margin around the ouside 
 
 h2 {
     margin: 20px 0px 10px 0px;
-    padding: 0px 30px 0px 30px;
+    padding: 0px 30px;
     font-size: 3rem;
     text-align: center;
 }
@@ -60,7 +59,7 @@ h2 {
 
 .entry.science_name {
     font-style: italic;
-    font-size:1.5rem;
+    font-size: 1.5rem;
 }
 
 @media only screen and (max-width: 300px) {
@@ -69,10 +68,10 @@ h2 {
     }
 
     .entry.science_name {
-        font-size:1.25rem;
+        font-size: 1.25rem;
     }
 
     .entry {
-        font-size:1rem;
+        font-size: 1rem;
     }
 }
