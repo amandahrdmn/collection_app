@@ -7,36 +7,30 @@ function getDB () {
     $plant_query = $db->prepare("SELECT * FROM `plants` LEFT JOIN `plant_types` ON `plants`.`type` = `plant_types`.`id`;");
     $plant_query->execute();
 
-    return $plant_query;
-}
-
-function makeAllTiles ($query) {
-    $plantEntry = getDataEntry($query);
-    while ($plantEntry) {
-        makePlantEntryTile($plantEntry);
-        $plantEntry = getDataEntry($query);
-    }
-}
-
-function getDataEntry(object $dataInput): array {
-    if (!empty($dataInput)) {
-        if (gettype($dataInput) === 'object') {
-            $entry = $dataInput->fetch();
-            return $entry;
+    $plant_data = $plant_query->fetchAll();
+    if (!empty($plant_data)) {
+        if (gettype($plant_data) === 'array') {
+            return $plant_data;
         } else {
-            echo 'Please input the correct data type';
-        }
+             return 'Unexpected error. Please refresh page.';
+         }
     } else {
-        echo 'There is no data for this collection.';
+        return 'There is no data for this collection.';
     }
 }
 
-function makePlantEntryTile (array $entry) {
+function DBCheck ($data) {
+    if (gettype($data) !== 'array') {
+        echo $data;
+    }
+}
+
+function makePlantEntryTile (array $entry): string {
     if (empty($entry)) {
-        echo 'There is no data for this entry';
+        return 'There is no data for this entry';
     } elseif (count($entry) < 4) {
-        echo 'There is not enough data for this entry';
+        return 'There is not enough data for this entry';
     } elseif (!empty($entry)) {
-        echo "<div class='entry_box'><div class='entry science_name'>" . $entry['science_name'] . "</div><div class='entry'>" . $entry['name'] . "</div><div class='entry'>" . $entry['type'] . "</div></div>";
+        return "<div class='entry_box'><div class='entry science_name'>" . $entry['science_name'] . "</div><div class='entry'>" . $entry['name'] . "</div><div class='entry'>" . $entry['type'] . "</div></div>";
     }
 }

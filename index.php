@@ -4,7 +4,9 @@ session_start();
 
 require('functions.php');
 
-$plant_query = getDB ();
+$plant_data = getDB ();
+
+DBCheck($plant_data);
 
 ?>
 <!doctype html>
@@ -19,9 +21,11 @@ $plant_query = getDB ();
 <section class='entries'>
     <div class='container'>
         <h2>Plant Collection:</h2>
-        <div class='entry_container'>
+        <div class='entry_container')>
                 <?php
-                    makeAllTiles($plant_query);
+                    foreach ($plant_data as $entry) {
+                        echo makePlantEntryTile($entry);
+                    }
                 ?>
         </div>
     </div>
