@@ -18,7 +18,7 @@ function makeAllTiles ($query) {
     }
 }
 
-function getDataEntry(object $dataInput): array {
+function getDataEntry(object $dataInput) {
     if (!empty($dataInput)) {
         if (gettype($dataInput) === 'object') {
             $entry = $dataInput->fetch();
