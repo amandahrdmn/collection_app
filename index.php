@@ -4,7 +4,7 @@ session_start();
 
 require('functions.php');
 
-$plant_query = getDB ();
+$plant_data = getDB ();
 
 ?>
 <!doctype html>
@@ -21,7 +21,7 @@ $plant_query = getDB ();
         <h2>Plant Collection:</h2>
         <div class='entry_container'>
                 <?php
-                    makeAllTiles($plant_query);
+                    makeAllTiles($plant_data);
                 ?>
         </div>
     </div>

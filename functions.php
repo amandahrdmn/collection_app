@@ -7,27 +7,21 @@ function getDB () {
     $plant_query = $db->prepare("SELECT * FROM `plants` LEFT JOIN `plant_types` ON `plants`.`type` = `plant_types`.`id`;");
     $plant_query->execute();
 
-    return $plant_query;
+   $plant_data = $plant_query->fetchAll();
+   if (!empty($plant_data)) {
+       if (gettype($plant_data) === 'array') {
+           return $plant_data;
+       } else {
+            echo 'Unexpected error. Please refresh page.';
+       }
+   } else {
+       echo 'There is no data for this collection.';
+   }
 }
 
-function makeAllTiles ($query) {
-    $plantEntry = getDataEntry($query);
-    while ($plantEntry) {
-        makePlantEntryTile($plantEntry);
-        $plantEntry = getDataEntry($query);
-    }
-}
-
-function getDataEntry(object $dataInput) {
-    if (!empty($dataInput)) {
-        if (gettype($dataInput) === 'object') {
-            $entry = $dataInput->fetch();
-            return $entry;
-        } else {
-            echo 'Please input the correct data type';
-        }
-    } else {
-        echo 'There is no data for this collection.';
+function makeAllTiles ($data) {
+    foreach ($data as $entry) {
+        makePlantEntryTile($entry);
     }
 }
 
