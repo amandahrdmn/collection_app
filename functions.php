@@ -19,6 +19,12 @@ function getDB () {
     }
 }
 
+function DBCheck ($data) {
+    if (gettype($data) !== 'array') {
+        echo $data;
+    }
+}
+
 function makePlantEntryTile (array $entry): string {
     if (empty($entry)) {
         return 'There is no data for this entry';

@@ -4,12 +4,14 @@
 
 html {
     font-size: 62.5%;
+    height: 100%;
 }
 
 body {                 	/* removes default padding and margin around the ouside of the entire webpage */
     margin: 0;
     padding: 0;
     background-color: #f5f5c9;
+    height: 100%;
 }
 
 @-ms-viewport {
@@ -26,11 +28,13 @@ h2 {
 .entries {
     display: flex;
     justify-content: center;
+    height: 100%;
 }
 
 .entries .container {
     width: 70%;
     background-color: #f5eac9;
+    height: 100%;
 }
 
 .entry_container {
@@ -38,6 +42,7 @@ h2 {
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
+    background-color: #f5eac9;
 }
 
 .entry_box {

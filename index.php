@@ -6,6 +6,8 @@ require('functions.php');
 
 $plant_data = getDB ();
 
+DBCheck($plant_data);
+
 ?>
 <!doctype html>
 <html lang='en' font-family = 'Segoe UI, Helvetica, Verdana'>
