@@ -1,0 +1,63 @@
+* {
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 62.5%;
+    height: 100%;
+}
+
+body {                 	/* removes default padding and margin around the ouside of the entire webpage */
+    margin: 0;
+    padding: 0;
+    background-color: #f5f5c9;
+    display:flex;
+    justify-content: center;
+}
+
+@-ms-viewport {
+    width: device-width;
+}
+
+button:focus {
+    border: 1px solid black;
+    outline: none;
+    background-color: #c9d4f5;
+}
+
+h2 {
+    font-size: 2.25rem;
+    text-align: center;
+    margin: 0px;
+    padding: 0px;
+}
+.container {
+    position: absolute;
+    width:30%;
+    top: 20vh;
+    background-color: #f5eac9;
+    padding: 30px;
+    border-radius: 5px;
+}
+
+form {
+    margin-top: 10px;
+    font-size: 1.75rem;
+    text-align:center;
+}
+
+input {
+    margin: 10px 0px;
+    padding: 5px 0px;
+    text-align: center;
+    border: none;
+    border-radius: 5px;
+}
+button {
+    margin-top: 20px;
+    padding: 5px 10px;
+    text-align: center;
+    border: 1px solid black;
+    border-radius: 5px;
+    background-color: #f5c9df;
+}
