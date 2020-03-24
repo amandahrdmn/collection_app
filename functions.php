@@ -4,7 +4,9 @@ function getDB() {
     $db = new PDO('mysql:host=DB;dbname=collection_app', 'root', 'password');
     $db->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
 
-    $plant_query = $db->prepare("SELECT * FROM `plants` LEFT JOIN `plant_types` ON `plants`.`type` = `plant_types`.`id`;");
+    $plant_query = $db->prepare("SELECT * FROM `plants` 
+                                    LEFT JOIN `plant_types` 
+                                        ON `plants`.`type` = `plant_types`.`id`;");
     $plant_query->execute();
 
     $plant_data = $plant_query->fetchAll();
@@ -17,7 +19,7 @@ function DBCheck($data): string {
         return 'There is no data for this collection.';
     } else {
         if (gettype($data) !== 'array') {
-            return 'Unexpected error. Please refresh page.';
+            return 'Database error. Please refresh page.';
         } else {
             return ' ';
         }
@@ -30,6 +32,10 @@ function makePlantEntryTile(array $entry): string {
     } elseif (count($entry) < 4) {
         return 'There is not enough data for this entry';
     } elseif (!empty($entry)) {
-        return "<div class='entry_box'><div class='entry science_name'>" . $entry['science_name'] . "</div><div class='entry'>" . $entry['name'] . "</div><div class='entry'>" . $entry['type'] . "</div></div>";
+        return "<div class='entry_box'>
+                        <div class='entry science_name'>" . $entry['science_name'] . "</div>
+                        <div class='entry'>" . $entry['name'] . "</div>
+                        <div class='entry'>" . $entry['type'] . "</div>
+                    </div>";
     }
 }

@@ -16,38 +16,47 @@ class collection_appTest extends TestCase
     }
 
     public function testErrorDBCheckStringInput() {
-        $expected = 'Unexpected error. Please refresh page.';
+        $expected = 'Database error. Please refresh page.';
         $actual = DBCheck('test');
         $this->assertEquals($expected,$actual);
     }
 
     public function testErrorDBCheckBoolInput() {
-        $expected = 'Unexpected error. Please refresh page.';
+        $expected = 'Database error. Please refresh page.';
         $actual = DBCheck(true);
         $this->assertEquals($expected,$actual);
     }
 
     public function testErrorDBCheckIntInput() {
-        $expected = 'Unexpected error. Please refresh page.';
+        $expected = 'Database error. Please refresh page.';
         $actual = DBCheck(1);
         $this->assertEquals($expected,$actual);
     }
 
     public function testErrorDBCheckFloatInput() {
-        $expected = 'Unexpected error. Please refresh page.';
+        $expected = 'Database error. Please refresh page.';
         $actual = DBCheck(1.1);
         $this->assertEquals($expected,$actual);
     }
 
     public function testSuccessMakePlantEntryTile() {
-        $expected = "<div class='entry_box'><div class='entry science_name'>" . "Querbus robur" . "</div><div class='entry'>" . "English Oak" . "</div><div class='entry'>" . "Tree" . "</div></div>";
-        $actual = makePlantEntryTile(['id' => "1", 'science_name' => "Querbus robur", 'name' => "English Oak", 'type' => "Tree"]);
+        $expected = "<div class='entry_box'>
+                        <div class='entry science_name'>Querbus robur</div>
+                        <div class='entry'>English Oak</div>
+                        <div class='entry'>Tree</div>
+                    </div>";
+        $actual = makePlantEntryTile(['id' => "1",
+                                      'science_name' => "Querbus robur",
+                                      'name' => "English Oak",
+                                      'type' => "Tree"]);
         $this->assertEquals($expected,$actual);
      }
 
     public function testErrorMakePlantEntryTileTooShort() {
         $expected = 'There is not enough data for this entry';
-        $actual = makePlantEntryTile(['id' => "1", 'science_name' => "Querbus robur", 'name' => "English Oak"]);
+        $actual = makePlantEntryTile(['id' => "1",
+                                      'science_name' => "Querbus robur",
+                                      'name' => "English Oak"]);
         $this->assertEquals($expected,$actual);
     }
 
