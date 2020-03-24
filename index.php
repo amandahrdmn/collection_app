@@ -5,7 +5,7 @@ $plant_data = getDB();
 
 $DBerror = DBCheck($plant_data);
 
-if (empty($DBerror)) {
+if (!empty($DBerror)) {
     echo $DBerror;
 }
 
@@ -29,4 +29,9 @@ if (empty($DBerror)) {
                     }
                 ?>
         </div>
+        <form action="addpage.php" method="POST">
+            <button type="submit">Add Entry</button>
+        </form>
     </div>
+</section>
+

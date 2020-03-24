@@ -29,6 +29,7 @@ h2 {
     display: flex;
     justify-content: center;
     height: 100%;
+    background-color: #f5eac9;
 }
 
 .entries .container {
@@ -64,6 +65,11 @@ h2 {
 
 .entry.science_name {
     font-style: italic;
+    font-size: 1.5rem;
+}
+
+button {
+    margin: 10px;
     font-size: 1.5rem;
 }
 
