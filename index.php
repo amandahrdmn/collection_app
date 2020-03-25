@@ -1,9 +1,9 @@
 <?php
 require_once('functions.php');
-
+$add_entry_message = '';
 if (!empty($_GET)) {
     if ($_GET['entry_add_successful'] === '1') {
-        $add_entry_message = '<div class="add_entry container">Entry addition successful!</div>';
+        $add_entry_message = '<div class="add_entry_container">Entry addition successful!</div>';
     }
 }
 
@@ -12,6 +12,7 @@ $plant_data = getPlantData(getDB());
 echo DBCheck($plant_data);
 
 ?>
+
 <!doctype html>
 <html lang='en'>
 <head>

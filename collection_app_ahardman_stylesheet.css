@@ -7,7 +7,7 @@ html {
     font-family: 'Segoe UI', Helvetica, Verdana;
 }
 
-body {                 	/* removes default padding and margin around the ouside of the entire webpage */
+body {
     margin: 0;
     padding: 0;
     background-color: #f5f5c9;
@@ -31,14 +31,12 @@ h2 {
     text-align: center;
 }
 
-.add_entry.container {
-    position: absolute;
+.add_entry_container {
     width: 300px;
     border-radius: 5px;
-    margin-bottom: 20px;
-    top: 20px;
-    background-color: #c9d4f5;
-    padding: 15px;
+    margin-top: 20px;
+    background-color: #f5c9df;
+    padding: 10px;
     font-size: 1.25rem;
     text-align: center;
 }
