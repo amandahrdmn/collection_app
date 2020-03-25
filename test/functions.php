@@ -62,19 +62,31 @@ class collection_appTest extends TestCase
         $this->assertEquals($expected,$actual);
     }
 
-    public function testFailPlantTypesBoolInput() {
+    public function testSuccessListPlantTypes() {
+        $expected = '<ul><li>Tree</li><li>Shrub</li></ul>';
+        $actual = listPlantTypes([['type' => 'Tree'], ['type' => 'Shrub']]);
+        $this->assertEquals($expected,$actual);
+    }
+
+    public function testErrorListPlantTypes() {
+        $expected = 'Array key error. Please enter different data.';
+        $actual = listPlantTypes([['size' => 'Tree'], ['type' => 'Shrub']]);
+        $this->assertEquals($expected,$actual);
+    }
+
+    public function testFailListPlantTypesBoolInput() {
         $this->expectException(TypeError::class);
         $actual = listPlantTypes(true);
 
     }
 
-    public function testFailPlantTypesIntInput() {
+    public function testFailListPlantTypesIntInput() {
         $this->expectException(TypeError::class);
         $actual = listPlantTypes(1);
 
     }
 
-    public function testFailPlantTypesFloatInput() {
+    public function testFailListPlantTypesFloatInput() {
         $this->expectException(TypeError::class);
         $actual = listPlantTypes(1.1);
 

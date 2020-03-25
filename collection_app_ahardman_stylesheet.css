@@ -31,6 +31,18 @@ h2 {
     text-align: center;
 }
 
+.add_entry.container {
+    position: absolute;
+    width: 300px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    top: 20px;
+    background-color: #c9d4f5;
+    padding: 15px;
+    font-size: 1.25rem;
+    text-align: center;
+}
+
 .entries {
     display: flex;
     justify-content: center;

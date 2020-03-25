@@ -52,12 +52,16 @@ function makePlantEntryTile(array $entry): string {
 }
 
 function listPlantTypes(array $plant_types): string {
-    $type_echo = '<ul>';
-    var_dump($plant_types);
-    foreach ($plant_types as $entry) {
-        $type_echo.= '<li>' . ucwords(strtolower($entry['type']),"/ -") . '</li>';
+    if (array_key_exists('type',$plant_types[0])) {
+        $type_echo = '<ul>';
+        foreach ($plant_types as $entry) {
+            $type_echo.= '<li>' . ucwords(strtolower($entry['type']),"/ -") . '</li>';
+        }
+        $type_echo.= '</ul>';
+    } else {
+        $type_echo = 'Array key error. Please enter different data.';
     }
-    return $type_echo . '</ul>';
+    return $type_echo;
 }
 
 function checkforUniqueAddEntry($db, string $science_name): bool {
