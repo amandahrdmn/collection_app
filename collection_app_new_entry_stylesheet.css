@@ -4,6 +4,7 @@
 
 html {
     font-size: 62.5%;
+    font-family: 'Segoe UI', Helvetica, Verdana;
     height: 100%;
 }
 
@@ -44,7 +45,7 @@ h2 {
 form {
     margin-top: 10px;
     font-size: 1.75rem;
-    text-align:center;
+    text-align: center;
 }
 
 input {
