@@ -53,6 +53,7 @@ function makePlantEntryTile(array $entry): string {
 
 function listPlantTypes(array $plant_types): string {
     $type_echo = '<ul>';
+    var_dump($plant_types);
     foreach ($plant_types as $entry) {
         $type_echo.= '<li>' . ucwords(strtolower($entry['type']),"/ -") . '</li>';
     }

@@ -4,7 +4,7 @@ use PHPUnit\Framework\TestCase;
 class collection_appTest extends TestCase
 {
     public function testSuccessDBCheck() {
-        $expected = ' ';
+        $expected = '';
         $actual = DBCheck([1,2,3]);
         $this->assertEquals($expected,$actual);
     }
@@ -16,28 +16,24 @@ class collection_appTest extends TestCase
     }
 
     public function testErrorDBCheckStringInput() {
-        $expected = 'Unexpected error. Please refresh page.';
+        $this->expectException(TypeError::class);
         $actual = DBCheck('test');
-        $this->assertEquals($expected,$actual);
     }
 
     public function testErrorDBCheckBoolInput() {
-        $expected = 'Unexpected error. Please refresh page.';
+        $this->expectException(TypeError::class);
         $actual = DBCheck(true);
-        $this->assertEquals($expected,$actual);
-    }
+        }
 
     public function testErrorDBCheckIntInput() {
-        $expected = 'Unexpected error. Please refresh page.';
+        $this->expectException(TypeError::class);
         $actual = DBCheck(1);
-        $this->assertEquals($expected,$actual);
-    }
+        }
 
     public function testErrorDBCheckFloatInput() {
-        $expected = 'Unexpected error. Please refresh page.';
+        $this->expectException(TypeError::class);
         $actual = DBCheck(1.1);
-        $this->assertEquals($expected,$actual);
-    }
+        }
 
     public function testSuccessMakePlantEntryTile() {
         $expected = "<div class='entry_box'>
@@ -64,5 +60,29 @@ class collection_appTest extends TestCase
         $expected = 'There is no data for this entry';
         $actual = makePlantEntryTile([]);
         $this->assertEquals($expected,$actual);
+    }
+
+    public function testFailPlantTypesBoolInput() {
+        $this->expectException(TypeError::class);
+        $actual = listPlantTypes(true);
+
+    }
+
+    public function testFailPlantTypesIntInput() {
+        $this->expectException(TypeError::class);
+        $actual = listPlantTypes(1);
+
+    }
+
+    public function testFailPlantTypesFloatInput() {
+        $this->expectException(TypeError::class);
+        $actual = listPlantTypes(1.1);
+
+    }
+
+    public function testFailPlantTypesStringInput() {
+        $this->expectException(TypeError::class);
+        $actual = listPlantTypes('1');
+
     }
 }
