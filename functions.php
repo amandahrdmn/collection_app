@@ -11,17 +11,16 @@ function getPlantData($db): array {
                                     LEFT JOIN `plant_types` 
                                         ON `plants`.`type` = `plant_types`.`id`;");
     $plant_query->execute();
-
     $plant_data = $plant_query->fetchAll();
 
     return $plant_data;
 }
 
 function getPlantTypes($db): array {
-    $plant_type_query = $db->prepare("SELECT `type` FROM `plant_types`");
+    $plant_type_query = $db->prepare("SELECT `type` FROM `plant_types`;");
     $plant_type_query->execute();
-
     $plant_types = $plant_type_query->fetchAll();
+
     return $plant_types;
 }
 
@@ -39,24 +38,32 @@ function DBCheck(array $data): string {
 
 function makePlantEntryTile(array $entry): string {
     if (empty($entry)) {
-        return 'There is no data for this entry';
+        $return_string = 'There is no data for this entry';
     } elseif (count($entry) < 4) {
-        return 'There is not enough information given for this type of entry.';
+        $return_string = 'There is not enough information given for this type of entry.';
     } elseif (!empty($entry)) {
-        return "<div class='entry_box'>
+        $return_string = "<div class='entry_box'>
                         <div class='entry science_name'>" . $entry['science_name'] . "</div>
                         <div class='entry'>" . ucwords($entry['name'],"/ -") . "</div>
                         <div class='entry'>" . ucwords(strtolower($entry['type']),"/ -") . "</div>
                     </div>";
     }
+
+    return $return_string;
 }
 
 function listPlantTypes(array $plant_types): string {
-    $type_echo = '<ul>';
-    foreach ($plant_types as $entry) {
-        $type_echo.= '<li>' . ucwords(strtolower($entry['type']),"/ -") . '</li>';
+    if (array_key_exists('type',$plant_types[0])) {
+        $type_echo = '<ul>';
+        foreach ($plant_types as $entry) {
+            $type_echo.= '<li>' . ucwords(strtolower($entry['type']),"/ -") . '</li>';
+        }
+        $type_echo.= '</ul>';
+    } else {
+        $type_echo = 'Array key error. Please enter different data.';
     }
-    return $type_echo . '</ul>';
+
+    return $type_echo;
 }
 
 function checkforUniqueAddEntry($db, string $science_name): bool {
@@ -77,11 +84,13 @@ function checkForWrongPlantType($db, string $type): array {
     if ($used_type === false) {
         $used_type = ['not found'];
     }
+
     return $used_type;
 }
 
 function insertDataToDB($db, string $science_name, string $name, array $used_type): string {
     $add_entry_query = $db->prepare("INSERT INTO `plants` (`science_name`,`name`,`type`) VALUES (?,?,?);");
     $add_entry_query->execute([$science_name, $name, $used_type['id']]);
+
     return 'Entry Added';
 }

@@ -8,7 +8,7 @@ html {
     height: 100%;
 }
 
-body {                 	/* removes default padding and margin around the ouside of the entire webpage */
+body {
     margin: 0;
     padding: 0;
     background-color: #f5f5c9;
@@ -55,7 +55,7 @@ h2 {
     padding: 30px;
 }
 
-.types.container  {
+.types.container {
     top: 476px;
     background-color: #c9d4f5;
     font-size: 1.25rem;
@@ -69,8 +69,6 @@ h2 {
     text-align: center;
     margin: 1rem;
 }
-
-
 
 form {
     margin-top: 10px;

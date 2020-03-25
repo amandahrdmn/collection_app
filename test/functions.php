@@ -3,43 +3,46 @@ require('../functions.php');
 use PHPUnit\Framework\TestCase;
 class collection_appTest extends TestCase
 {
-    public function testSuccessDBCheck() {
-        $expected = ' ';
+    public function testSuccessDBCheck()
+    {
+        $expected = '';
         $actual = DBCheck([1,2,3]);
         $this->assertEquals($expected,$actual);
     }
 
-    public function testErrorDBCheckEmptyInput() {
+    public function testErrorDBCheckEmptyInput()
+    {
         $expected = 'There is no data for this collection.';
         $actual = DBCheck([]);
         $this->assertEquals($expected,$actual);
     }
 
-    public function testErrorDBCheckStringInput() {
-        $expected = 'Unexpected error. Please refresh page.';
+    public function testErrorDBCheckStringInput()
+    {
+        $this->expectException(TypeError::class);
         $actual = DBCheck('test');
-        $this->assertEquals($expected,$actual);
     }
 
-    public function testErrorDBCheckBoolInput() {
-        $expected = 'Unexpected error. Please refresh page.';
+    public function testErrorDBCheckBoolInput()
+    {
+        $this->expectException(TypeError::class);
         $actual = DBCheck(true);
-        $this->assertEquals($expected,$actual);
     }
 
-    public function testErrorDBCheckIntInput() {
-        $expected = 'Unexpected error. Please refresh page.';
+    public function testErrorDBCheckIntInput()
+    {
+        $this->expectException(TypeError::class);
         $actual = DBCheck(1);
-        $this->assertEquals($expected,$actual);
     }
 
-    public function testErrorDBCheckFloatInput() {
-        $expected = 'Unexpected error. Please refresh page.';
+    public function testErrorDBCheckFloatInput()
+    {
+        $this->expectException(TypeError::class);
         $actual = DBCheck(1.1);
-        $this->assertEquals($expected,$actual);
     }
 
-    public function testSuccessMakePlantEntryTile() {
+    public function testSuccessMakePlantEntryTile()
+    {
         $expected = "<div class='entry_box'>
                         <div class='entry science_name'>Querbus robur</div>
                         <div class='entry'>English Oak</div>
@@ -52,7 +55,8 @@ class collection_appTest extends TestCase
         $this->assertEquals($expected,$actual);
      }
 
-    public function testErrorMakePlantEntryTileTooShort() {
+    public function testErrorMakePlantEntryTileTooShort()
+    {
         $expected = 'There is not enough information given for this type of entry.';
         $actual = makePlantEntryTile(['id' => "1",
                                       'science_name' => "Querbus robur",
@@ -60,9 +64,48 @@ class collection_appTest extends TestCase
         $this->assertEquals($expected,$actual);
     }
 
-    public function testErrorMakePlantEntryTileEmptyInput() {
+    public function testErrorMakePlantEntryTileEmptyInput()
+    {
         $expected = 'There is no data for this entry';
         $actual = makePlantEntryTile([]);
         $this->assertEquals($expected,$actual);
+    }
+
+    public function testSuccessListPlantTypes()
+    {
+        $expected = '<ul><li>Tree</li><li>Shrub</li></ul>';
+        $actual = listPlantTypes([['type' => 'Tree'], ['type' => 'Shrub']]);
+        $this->assertEquals($expected,$actual);
+    }
+
+    public function testErrorListPlantTypes()
+    {
+        $expected = 'Array key error. Please enter different data.';
+        $actual = listPlantTypes([['size' => 'Tree'], ['type' => 'Shrub']]);
+        $this->assertEquals($expected,$actual);
+    }
+
+    public function testFailListPlantTypesBoolInput()
+    {
+        $this->expectException(TypeError::class);
+        $actual = listPlantTypes(true);
+    }
+
+    public function testFailListPlantTypesIntInput()
+    {
+        $this->expectException(TypeError::class);
+        $actual = listPlantTypes(1);
+    }
+
+    public function testFailListPlantTypesFloatInput()
+    {
+        $this->expectException(TypeError::class);
+        $actual = listPlantTypes(1.1);
+    }
+
+    public function testFailPlantTypesStringInput()
+    {
+        $this->expectException(TypeError::class);
+        $actual = listPlantTypes('1');
     }
 }
