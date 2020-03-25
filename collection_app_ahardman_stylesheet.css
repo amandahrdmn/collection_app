@@ -4,6 +4,7 @@
 
 html {
     font-size: 62.5%;
+    font-family: 'Segoe UI', Helvetica, Verdana;
 }
 
 body {                 	/* removes default padding and margin around the ouside of the entire webpage */

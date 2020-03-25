@@ -1,9 +1,9 @@
 <!doctype html>
-<html lang='en' font-family = 'Segoe UI, Helvetica, Verdana'>
+<html lang='en'>
 <head>
     <title>collection_app_ahardman</title>
-    <link href='normalize.css' rel='stylesheet' type='text/css'>
     <link href='collection_app_new_entry_stylesheet.css' rel='stylesheet' type='text/css'>
+    <link href='normalize.css' rel='stylesheet' type='text/css'>
     <meta name="viewport" content="width=device-width">
 </head>
 
