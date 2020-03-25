@@ -28,8 +28,8 @@ button:focus {
 h2 {
     font-size: 2.25rem;
     text-align: center;
-    margin: 0px;
-    padding: 0px;
+    margin: 0;
+    padding: 0;
 }
 
 .container {
@@ -48,8 +48,8 @@ form {
 }
 
 input {
-    margin: 10px 0px;
-    padding: 5px 0px;
+    margin: 10px 0;
+    padding: 5px 0;
     text-align: center;
     border: none;
     border-radius: 5px;
