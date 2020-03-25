@@ -9,7 +9,7 @@ echo DBCheck($plant_data);
 
 ?>
 <!doctype html>
-<html lang='en' font-family = 'Segoe UI, Helvetica, Verdana'>
+<html lang='en'>
 <head>
     <title>collection_app_ahardman</title>
     <link href='collection_app_ahardman_stylesheet.css' rel='stylesheet' type='text/css'>
