@@ -19,7 +19,7 @@ echo DBCheck($plant_data);
 
 <section class='entries'>
     <div class='container'>
-        <h2>Plant Collection:</h2>
+        <h2>Plant Collection</h2>
         <div class='entry_container')>
                 <?php
                     foreach ($plant_data as $entry) {

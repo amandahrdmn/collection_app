@@ -7,8 +7,6 @@
     <meta name="viewport" content="width=device-width">
 </head>
 
-
-
 <section class= 'container'>
     <h2>Add Entry</h2>
     <form id='add_entry' action="entry_check.php" method="POST" >
@@ -16,10 +14,10 @@
             <input type="text" name="science_name" placeholder="Scientific Name">
         </div>
         <div>
-            <input type="password" name="name" placeholder="Common Name">
+            <input type="text" name="name" placeholder="Common Name">
         </div>
         <div>
-            <input type="password" name="type" placeholder="Plant Type">
+            <input type="text" name="type" placeholder="Plant Type">
         </div>
         <div>
             <button type="submit">Add Entry</button>
