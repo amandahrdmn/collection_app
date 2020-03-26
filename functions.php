@@ -31,6 +31,6 @@ function makePlantEntryTile (array $entry): string {
     } elseif (count($entry) < 4) {
         return 'There is not enough data for this entry';
     } elseif (!empty($entry)) {
-        return "<div class='entry_box'><div class='entry science_name'>" . $entry['science_name'] . "</div><div class='entry'>" . $entry['name'] . "</div><div class='entry'>" . $entry['type'] . "</div></div>";
+        return "< class='entry_box'><img src=" . $entry['image']. " alt='entry_image'><div class='entry science_name'>" . $entry['science_name'] . "</div><div class='entry'>" . $entry['name'] . "</div><div class='entry'>" . $entry['type'] . "</div></div>";
     }
 }
