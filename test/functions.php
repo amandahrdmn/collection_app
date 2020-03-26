@@ -106,13 +106,15 @@ class collection_appTest extends TestCase
     }
 
     public function testCatchGetErrorMessageFloatInput() {
-        $this->expectException(TypeError::class);
+        $expected = 'Undefined error. Please try again.';
         $actual = getErrorMessage(1.1);
+        $this->assertEquals($expected,$actual);
     }
 
     public function testCatchGetErrorMessageBoolInput() {
-        $this->expectException(TypeError::class);
+        $expected = 'Undefined error. Please try again.';
         $actual = getErrorMessage(false);
+        $this->assertEquals($expected,$actual);
     }
 
     public function testSuccessGetPlantTypeOptions() {

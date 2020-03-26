@@ -69,13 +69,19 @@ function makePlantEntryTile(array $entry): string {
 }
 
 function getErrorMessage(string $error): string {
-    $error_string = ['1' => 'Please enter data for all fields.',
-                    '2' => 'Oops! Something went wrong. Please try again.',
-                    '3' => "The plant type given wasn't recognised. 
+    if ($error === '1' || $error === '2' || $error === '3' || $error === '4') {
+        $error_string = ['1' => 'Please enter data for all fields.',
+            '2' => 'Oops! Something went wrong. Please try again.',
+            '3' => "The plant type given wasn't recognised. 
                             Please select from the list of possible types and try again.",
-                    '4' => 'This entry has already been added.'];
+            '4' => 'This entry has already been added.'];
 
-    return $error_string[$error];
+        return $error_string[$error];
+    } else {
+        return 'Undefined error. Please try again.';
+    }
+
+
 }
 
 function getPlantTypeOptions(array $plant_types): string {
