@@ -58,8 +58,7 @@ class collection_appTest extends TestCase
     public function testErrorMakePlantEntryTileTooShort()
     {
         $expected = 'There is not enough information given for this type of entry.';
-        $actual = makePlantEntryTile(['id' => "1",
-                                      'science_name' => "Querbus robur",
+        $actual = makePlantEntryTile(['science_name' => "Querbus robur",
                                       'name' => "English Oak"]);
         $this->assertEquals($expected,$actual);
     }
@@ -107,5 +106,50 @@ class collection_appTest extends TestCase
     {
         $this->expectException(TypeError::class);
         $actual = listPlantTypes('1');
+    }
+
+    public function testSuccessGetErrorMessage1()
+    {
+        $expected = 'Please enter data for all fields.';
+        $actual = getErrorMessage('1');
+        $this->assertEquals($expected,$actual);
+    }
+
+    public function testSuccessGetErrorMessage2()
+    {
+        $expected = 'Oops! Something went wrong. Please try again.';
+        $actual = getErrorMessage('2');
+        $this->assertEquals($expected,$actual);
+    }
+
+    public function testSuccessGetErrorMessage3()
+    {
+        $expected = 'The plant type given wasn\'t recognised. 
+                            Please select from the list of possible types and try again.';
+        $actual = getErrorMessage('3');
+        $this->assertEquals($expected,$actual);
+    }
+
+    public function testSuccessGetErrorMessage4()
+    {
+        $expected = 'This entry has already been added.';
+        $actual = getErrorMessage('4');
+        $this->assertEquals($expected,$actual);
+    }
+
+    public function testCatchGetErrorMessageIntInput() {
+        $expected = 'Please enter data for all fields.';
+        $actual = getErrorMessage(1);
+        $this->assertEquals($expected,$actual);
+    }
+
+    public function testCatchGetErrorMessageFloatInput() {
+        $this->expectException(TypeError::class);
+        $actual = getErrorMessage(1.1);
+    }
+
+    public function testCatchGetErrorMessageBoolInput() {
+        $this->expectException(TypeError::class);
+        $actual = getErrorMessage(false);
     }
 }

@@ -7,7 +7,7 @@ function getDB() {
 }
 
 function getPlantData($db): array {
-    $plant_query = $db->prepare("SELECT * FROM `plants` 
+    $plant_query = $db->prepare("SELECT `science_name`,`name`,`plant_types`.`type` FROM `plants` 
                                     LEFT JOIN `plant_types` 
                                         ON `plants`.`type` = `plant_types`.`id`;");
     $plant_query->execute();
@@ -39,7 +39,7 @@ function DBCheck(array $data): string {
 function makePlantEntryTile(array $entry): string {
     if (empty($entry)) {
         $return_string = 'There is no data for this entry';
-    } elseif (count($entry) < 4) {
+    } elseif (count($entry) < 3) {
         $return_string = 'There is not enough information given for this type of entry.';
     } elseif (!empty($entry)) {
         $return_string = "<div class='entry_box'>
@@ -66,31 +66,38 @@ function listPlantTypes(array $plant_types): string {
     return $type_echo;
 }
 
-function checkforUniqueAddEntry($db, string $science_name): bool {
-    $nonunique_entry_query = $db->prepare("SELECT `id` FROM `plants` WHERE `science_name` = ?;");
-    $nonunique_entry_query->execute([$science_name]);
+function checkforUniqueAddEntry($db, string $science_name, string $common_name): bool {
+    $nonunique_entry_query = $db->prepare("SELECT `id` FROM `plants` WHERE `science_name` = ? OR `name` = ?;");
+    $nonunique_entry_query->execute([$science_name, $common_name]);
     $nonunique_entry = $nonunique_entry_query->fetch();
-    if ($nonunique_entry !== false) {
-        $nonunique_entry = true;
-    }
+    $nonunique_entry = !$nonunique_entry ? false : true;
 
     return $nonunique_entry;
 }
 
-function checkForWrongPlantType($db, string $type): array {
-    $used_type_query = $db->prepare("SELECT `id` FROM `plant_types` WHERE `type` = upper(?);");
-    $used_type_query->execute([$type]);
+function checkForWrongPlantType($db, string $type): int {
+    $upper_type = strtoupper($type);
+    $used_type_query = $db->prepare("SELECT `id` FROM `plant_types` WHERE `type` = ?;");
+    $used_type_query->execute([$upper_type]);
     $used_type = $used_type_query->fetch();
-    if ($used_type === false) {
-        $used_type = ['not found'];
-    }
+    $type_int = (int) $used_type['id'];
 
-    return $used_type;
+    return $type_int;
 }
 
-function insertDataToDB($db, string $science_name, string $name, array $used_type): string {
-    $add_entry_query = $db->prepare("INSERT INTO `plants` (`science_name`,`name`,`type`) VALUES (?,?,?);");
-    $add_entry_query->execute([$science_name, $name, $used_type['id']]);
+function insertDataToDB($db, array $plantData): string {
+    $add_entry_query = $db->prepare("INSERT INTO `plants` (`science_name`,`name`,`type`) VALUES (:science_name,:common_name,:type_int);");
+    $add_entry_query->execute($plantData);
 
     return 'Entry Added';
+}
+
+function getErrorMessage(string $error): string {
+    $error_string = ['1' => 'Please enter data for all fields.',
+                    '2' => 'Oops! Something went wrong. Please try again.',
+                    '3' => "The plant type given wasn't recognised. 
+                            Please select from the list of possible types and try again.",
+                    '4' => 'This entry has already been added.'];
+
+    return $error_string[$error];
 }

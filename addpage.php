@@ -4,20 +4,11 @@ $db = getDB();
 $plant_type_list = listPlantTypes(getPlantTypes($db));
 
 $error_message = '';
-$types_message = '';
+$types_message = "<div class=\"types container\">" . $plant_type_list . "</div>";
 
-if (!empty($_GET)) {
-    if ($_GET['entry_add_error'] === '1') {
-        $error_message = '<div class="error container">Please enter data for all fields.</div>';
-    } elseif ($_GET['entry_add_error'] === '2') {
-        $error_message = '<div class="error container">Oops! Something went wrong. Please try again.</div>';
-    } elseif ($_GET['entry_add_error'] === '3') {
-        $error_message = "<div class=\"error container\">The plant type given wasn't recognised. 
-                      Please select from the list of possible types and try again.</div>";
-        $types_message = "<div class=\"types container\">" . $plant_type_list . "</div>";
-    }  elseif ($_GET['entry_add_error'] === '4') {
-        $error_message = '<div class="error container">This entry has already been added.</div>';
-    }
+if (!empty($_GET['entry_add_error'])) {
+    $error_number = $_GET['entry_add_error'];
+    $error_message = '<div class="error container">' . getErrorMessage($error_number) . '</div>';
 }
 
 ?>
@@ -36,13 +27,13 @@ if (!empty($_GET)) {
     <h2>Add Entry</h2>
     <form id='add_entry' action="entry_check.php" method="POST" >
         <div>
-            <input type="text" name="science_name" placeholder="Scientific Name">
+            <input required type="text" name="science_name" placeholder="Scientific Name">
         </div>
         <div>
-            <input type="text" name="name" placeholder="Common Name">
+            <input required type="text" name="common_name" placeholder="Common Name">
         </div>
         <div>
-            <input type="text" name="type" placeholder="Plant Type">
+            <input required type="text" name="type" placeholder="Plant Type">
         </div>
         <div>
             <button type="submit">Add Entry</button>
