@@ -1,17 +1,20 @@
 <?php
 require_once('functions.php');
-
-$plant_data = getDB();
-
-$DBerror = DBCheck($plant_data);
-
-if (!empty($DBerror)) {
-    echo $DBerror;
+$add_entry_message = '';
+if (!empty($_GET['entry_add_successful'])) {
+    if ($_GET['entry_add_successful'] === '1') {
+        $add_entry_message = '<div class="add_entry_container">Entry addition successful!</div>';
+    }
 }
 
+$plant_data = getPlantData(getDB());
+
+echo DBCheck($plant_data);
+
 ?>
+
 <!doctype html>
-<html lang='en' font-family = 'Segoe UI, Helvetica, Verdana'>
+<html lang='en'>
 <head>
     <title>collection_app_ahardman</title>
     <link href='normalize.css' rel='stylesheet' type='text/css'>
@@ -21,7 +24,8 @@ if (!empty($DBerror)) {
 
 <section class='entries'>
     <div class='container'>
-        <h2>Plant Collection:</h2>
+        <?php echo $add_entry_message ?>
+        <h2>Plant Collection</h2>
         <div class='entry_container')>
                 <?php
                     foreach ($plant_data as $entry) {
@@ -29,4 +33,9 @@ if (!empty($DBerror)) {
                     }
                 ?>
         </div>
+        <form action="addpage.php" method="POST">
+            <button type="submit">Add Entry</button>
+        </form>
     </div>
+</section>
+
