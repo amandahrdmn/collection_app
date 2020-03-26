@@ -70,44 +70,6 @@ class collection_appTest extends TestCase
         $this->assertEquals($expected,$actual);
     }
 
-    public function testSuccessListPlantTypes()
-    {
-        $expected = '<ul><li>Tree</li><li>Shrub</li></ul>';
-        $actual = listPlantTypes([['type' => 'Tree'], ['type' => 'Shrub']]);
-        $this->assertEquals($expected,$actual);
-    }
-
-    public function testErrorListPlantTypes()
-    {
-        $expected = 'Array key error. Please enter different data.';
-        $actual = listPlantTypes([['size' => 'Tree'], ['type' => 'Shrub']]);
-        $this->assertEquals($expected,$actual);
-    }
-
-    public function testFailListPlantTypesBoolInput()
-    {
-        $this->expectException(TypeError::class);
-        $actual = listPlantTypes(true);
-    }
-
-    public function testFailListPlantTypesIntInput()
-    {
-        $this->expectException(TypeError::class);
-        $actual = listPlantTypes(1);
-    }
-
-    public function testFailListPlantTypesFloatInput()
-    {
-        $this->expectException(TypeError::class);
-        $actual = listPlantTypes(1.1);
-    }
-
-    public function testFailPlantTypesStringInput()
-    {
-        $this->expectException(TypeError::class);
-        $actual = listPlantTypes('1');
-    }
-
     public function testSuccessGetErrorMessage1()
     {
         $expected = 'Please enter data for all fields.';
@@ -151,5 +113,31 @@ class collection_appTest extends TestCase
     public function testCatchGetErrorMessageBoolInput() {
         $this->expectException(TypeError::class);
         $actual = getErrorMessage(false);
+    }
+
+    public function testSuccessGetPlantTypeOptions() {
+        $expected = '<option class = \'styled_option\' value=bl>Bl</option>';
+        $actual = getPlantTypeOptions([['id' => 'bl', 'type' => 'bl']]);
+        $this->assertEquals($expected,$actual);
+    }
+
+    public function testFailGetPlantTypeOptionsInt() {
+        $this->expectException(TypeError::class);
+        $actual = getPlantTypeOptions(1);
+    }
+
+    public function testFailGetPlantTypeOptionsFloat() {
+        $this->expectException(TypeError::class);
+        $actual = getPlantTypeOptions(1.1);
+    }
+
+    public function testFailGetPlantTypeOptionsString() {
+        $this->expectException(TypeError::class);
+        $actual = getPlantTypeOptions('1');
+    }
+
+    public function testFailGetPlantTypeOptionsBool() {
+        $this->expectException(TypeError::class);
+        $actual = getPlantTypeOptions(false);
     }
 }

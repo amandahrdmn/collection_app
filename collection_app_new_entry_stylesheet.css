@@ -27,6 +27,11 @@ button:focus {
     background-color: #c9d4f5;
 }
 
+.styled_select:focus {
+    outline: none;
+    background-color: #c9d4f5;
+}
+
 h2 {
     font-size: 2.25rem;
     text-align: center;
@@ -71,7 +76,7 @@ h2 {
 }
 
 form {
-    margin-top: 10px;
+    margin: 10px 0px;
     font-size: 1.75rem;
     text-align: center;
 }
@@ -79,10 +84,29 @@ form {
 input {
     width: 96%;
     margin: 10px 2%;
-    padding: 5px 0;
-    text-align: center;
+    padding: 5px 10px;
     border: none;
     border-radius: 5px;
+    background-color: #e9f0fd;
+}
+
+input::placeholder {
+    color: #666666;
+    font-style: italic;
+}
+
+.styled_select {
+    width: 96%;
+    height: 3rem;
+    margin: 10px 2%;
+    border: none;
+    border-radius: 5px;
+    background-color: #ffffff;
+    color: #666666;
+}
+
+.styled_select:valid {
+    background-color: #e9f0fd;
 }
 
 button {

@@ -1,14 +1,9 @@
 <?php
 require_once('functions.php');
-$db = getDB();
-$plant_type_list = listPlantTypes(getPlantTypes($db));
 
 $error_message = '';
-$types_message = "<div class=\"types container\">" . $plant_type_list . "</div>";
-
 if (!empty($_GET['entry_add_error'])) {
-    $error_number = $_GET['entry_add_error'];
-    $error_message = '<div class="error container">' . getErrorMessage($error_number) . '</div>';
+    $error_message = '<div class="error container">' . getErrorMessage($_GET['entry_add_error']) . '</div>';
 }
 
 ?>
@@ -33,13 +28,14 @@ if (!empty($_GET['entry_add_error'])) {
             <input required type="text" name="common_name" placeholder="Common Name">
         </div>
         <div>
-            <input required type="text" name="type" placeholder="Plant Type">
+            <select class = 'styled_select' required>
+                <?php echo getPlantTypeOptions(getPlantTypes(getDB())) ?>
+            </select>
         </div>
         <div>
             <button type="submit">Add Entry</button>
         </div>
     </form>
 </section>
-<?php echo $types_message ?>
 
 
