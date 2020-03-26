@@ -28,7 +28,7 @@ if (!empty($_GET['entry_add_error'])) {
             <input required type="text" name="common_name" placeholder="Common Name">
         </div>
         <div>
-            <select class = 'styled_select' required>
+            <select id="styled_select" required name='type' class='styled_select'>
                 <?php echo getPlantTypeOptions(getPlantTypes(getDB())) ?>
             </select>
         </div>

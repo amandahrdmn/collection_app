@@ -33,20 +33,11 @@ function checkforUniqueAddEntry($db, string $science_name, string $common_name):
     return $nonunique_entry;
 }
 
-function checkForWrongPlantType($db, string $type): int {
-    $upper_type = strtoupper($type);
-    $used_type_query = $db->prepare("SELECT `id` FROM `plant_types` WHERE `type` = ?;");
-    $used_type_query->execute([$upper_type]);
-    $used_type = $used_type_query->fetch();
-
-    return (int) $used_type['id'];
-}
-
 function insertDataToDB($db, array $plantData): bool {
-    $add_entry_query = $db->prepare("INSERT INTO `plants` (`science_name`,`name`,`type`) VALUES (:science_name,:common_name,:type_int);");
-    $add_entry_query->execute($plantData);
+    $add_entry_query = $db->prepare("INSERT INTO `plants` (`science_name`,`name`,`type`) VALUES (:science_name,:common_name,:type);");
+    $entry_check = $add_entry_query->execute($plantData);
 
-    return $add_entry_query;
+    return $entry_check;
 }
 
 function DBCheck(array $data): string {
