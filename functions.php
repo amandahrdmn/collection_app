@@ -75,7 +75,7 @@ function getErrorMessage(string $error): string {
                             Please select from the list of possible types and try again.",
         '4' => 'This entry has already been added.'];
 
-    if (array_key_exists($error,$error_string)) {
+    if (array_key_exists($error, $error_string)) {
         return $error_string[$error];
     } else {
         return 'Undefined error. Please try again.';
