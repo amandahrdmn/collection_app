@@ -21,20 +21,13 @@ if (!empty($_GET['entry_add_error'])) {
 <section class= 'adding container'>
     <h2>Add Entry</h2>
     <form id='add_entry' action="entry_check.php" method="POST" >
-        <div>
             <input required type="text" name="science_name" placeholder="Scientific Name">
-        </div>
-        <div>
             <input required type="text" name="common_name" placeholder="Common Name">
-        </div>
-        <div>
+            <input required type="text" name="image" placeholder="Image URL">
             <select id="styled_select" required name='type' class='styled_select'>
                 <?php echo getPlantTypeOptions(getPlantTypes(getDB())) ?>
             </select>
-        </div>
-        <div>
             <button type="submit">Add Entry</button>
-        </div>
     </form>
 </section>
 

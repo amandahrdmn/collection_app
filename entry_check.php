@@ -3,7 +3,7 @@ require_once('functions.php');
 session_start();
 $db = getDB();
 
-if (empty($_POST['science_name']) || empty($_POST['common_name']) || empty($_POST['type'])) {
+if (empty($_POST['science_name']) || empty($_POST['common_name']) || empty($_POST['type'] || empty($_POST['image']))) {
     header('Location: addpage.php?entry_add_error=1');
 } else {
     $nonunique_entry = checkforUniqueAddEntry($db, $_POST['science_name'], $_POST['common_name']);

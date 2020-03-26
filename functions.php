@@ -7,7 +7,7 @@ function getDB() {
 }
 
 function getPlantData($db): array {
-    $plant_query = $db->prepare("SELECT `science_name`,`name`,`plant_types`.`type` FROM `plants` 
+    $plant_query = $db->prepare("SELECT `image`,`science_name`,`name`,`plant_types`.`type` FROM `plants` 
                                     LEFT JOIN `plant_types` 
                                         ON `plants`.`type` = `plant_types`.`id`;");
     $plant_query->execute();
@@ -34,7 +34,7 @@ function checkforUniqueAddEntry($db, string $science_name, string $common_name):
 }
 
 function insertDataToDB($db, array $plantData): bool {
-    $add_entry_query = $db->prepare("INSERT INTO `plants` (`science_name`,`name`,`type`) VALUES (:science_name,:common_name,:type);");
+    $add_entry_query = $db->prepare("INSERT INTO `plants` (`science_name`,`name`,`type`,`image`) VALUES (:science_name,:common_name,:type,:image);");
     $entry_check = $add_entry_query->execute($plantData);
 
     return $entry_check;
@@ -55,10 +55,11 @@ function DBCheck(array $data): string {
 function makePlantEntryTile(array $entry): string {
     if (empty($entry)) {
         $return_string = 'There is no data for this entry';
-    } elseif (count($entry) < 3) {
+    } elseif (count($entry) < 4) {
         $return_string = 'There is not enough information given for this type of entry.';
     } elseif (!empty($entry)) {
         $return_string = "<div class='entry_box'>
+                        <img src='" . $entry['image'] . "'>
                         <div class='entry science_name'>" . $entry['science_name'] . "</div>
                         <div class='entry'>" . ucwords($entry['name'],"/ -") . "</div>
                         <div class='entry'>" . ucwords(strtolower($entry['type']),"/ -") . "</div>

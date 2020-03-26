@@ -44,11 +44,12 @@ class collection_appTest extends TestCase
     public function testSuccessMakePlantEntryTile()
     {
         $expected = "<div class='entry_box'>
+                        <img src='https://s.ecrater.com/stores/59305/4f39bf0bddea9_59305n.jpg'>
                         <div class='entry science_name'>Querbus robur</div>
                         <div class='entry'>English Oak</div>
                         <div class='entry'>Tree</div>
                     </div>";
-        $actual = makePlantEntryTile(['id' => "1",
+        $actual = makePlantEntryTile(['image' => "https://s.ecrater.com/stores/59305/4f39bf0bddea9_59305n.jpg",
                                       'science_name' => "Querbus robur",
                                       'name' => "English Oak",
                                       'type' => "Tree"]);
