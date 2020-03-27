@@ -27,11 +27,6 @@ button:focus {
     background-color: #c9d4f5;
 }
 
-.styled_select:focus, input:focus, textarea:focus {
-    outline: none;
-    background-color: #c9d4f5;
-}
-
 h2 {
     font-size: 2.25rem;
     text-align: center;
@@ -46,55 +41,64 @@ h2 {
     margin-bottom: 20px;
 }
 
-.error.container {
-    top: 90px;
-    background-color: #c9d4f5;
-    padding: 15px;
-    font-size: 1.25rem;
-    text-align: center;
-}
-
 .adding.container {
-    top: 170px;
+    top: 100px;
     background-color: #f5eac9;
     padding: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 form {
-    margin: 10px 0px;
-    font-size: 1.75rem;
-    text-align: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
 }
-
-input {
-    width: 96%;
-    margin: 10px 2%;
-    padding: 5px 10px;
-    border: none;
+.entry_box {
+    margin: 10px;
+    padding-bottom: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    width: 250px;
+    height: 340px;
+    background-color: #c9d4f5;
     border-radius: 5px;
-    background-color: #e9f0fd;
 }
 
-input::placeholder {
-    color: #666666;
+img {
+    object-fit: cover;
+    margin-top: 10px;
+    height: 200px;
+    width: 200px;
+}
+
+.entry {
+    font-size: 1.25rem;
+}
+
+.entry.science_name {
     font-style: italic;
-}
-
-.styled_select {
-    width: 96%;
-    height: 3rem;
-    margin: 10px 2%;
-    border: none;
-    border-radius: 5px;
-    background-color: #e9f0fd;
-    color: #666666;
+    font-size: 1.5rem;
 }
 
 button {
-    margin-top: 20px;
+    height: 40px;
+    width: 60px;
+    font-size: 2rem;
+    margin: 10px 15px 0 15px;
     padding: 5px 10px;
     text-align: center;
     border: 1px solid black;
     border-radius: 5px;
-    background-color: #f5c9df;
+}
+
+.return_button {
+    background-color: #e8a7a1;
+}
+
+.delete_button {
+    background-color: #a1e8b9;
 }

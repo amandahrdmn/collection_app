@@ -24,6 +24,11 @@ button:focus {
     background-color: #c9d4f5;
 }
 
+.edit_button:focus, .delete_button:focus {
+    outline: none;
+    background-color: #c9d4f5;
+}
+
 h2 {
     margin: 20px 0 10px 0;
     padding: 0 30px;
@@ -72,7 +77,7 @@ h2 {
     justify-content: space-around;
     align-items: center;
     width: 250px;
-    height: 300px;
+    height: 340px;
     background-color: #c9d4f5;
     border-radius: 5px;
 }
@@ -102,6 +107,18 @@ button {
     border-radius: 5px;
     background-color: #f5c9df;
 }
+
+.edit_button, .delete_button {
+    width: 70px;
+    margin: 0;
+    font-size: 1.25rem;
+    background-color: #f5c9df;
+}
+
+.edit_button {
+    margin-right: 20px;
+}
+
 
 @media only screen and (max-width: 300px) {
     h2 {

@@ -24,7 +24,7 @@ if (!empty($_GET['entry_add_error'])) {
             <input required type="text" name="science_name" placeholder="Scientific Name">
             <input required type="text" name="common_name" placeholder="Common Name">
             <input required type="text" name="image" placeholder="Image URL">
-            <select id="styled_select" required name='type' class='styled_select'>
+            <select id="styled_select" required name='plant_type' class='styled_select'>
                 <?php echo getPlantTypeOptions(getPlantTypes(getDB())) ?>
             </select>
             <button type="submit">Add Entry</button>

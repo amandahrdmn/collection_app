@@ -47,7 +47,7 @@ h2 {
 }
 
 .error.container {
-    top: 90px;
+    top: 30px;
     background-color: #c9d4f5;
     padding: 15px;
     font-size: 1.25rem;
@@ -55,9 +55,26 @@ h2 {
 }
 
 .adding.container {
-    top: 170px;
+    top: 100px;
     background-color: #f5eac9;
     padding: 30px;
+}
+
+.label {
+    margin-top: 10px;
+    font-size: 1.75rem;
+
+}
+
+.current_value {
+    margin-top: 5px;
+    font-size: 1.5rem;
+}
+
+.current_value.image {
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    font-size: 1rem;
 }
 
 form {
@@ -86,8 +103,12 @@ input::placeholder {
     margin: 10px 2%;
     border: none;
     border-radius: 5px;
-    background-color: #e9f0fd;
+    background-color: #ffffff;
     color: #666666;
+}
+
+.styled_select:valid {
+    background-color: #e9f0fd;
 }
 
 button {
