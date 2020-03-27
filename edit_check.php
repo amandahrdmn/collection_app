@@ -27,7 +27,10 @@ if ($_POST['science_name'] === '' && $_POST['common_name'] === '' && $_POST['ima
         header('Location: editpage.php?entry_edit_error=1');
     } else {
         $nonunique_entry = checkforUniqueAddEntry($db, $plant_data['science_name'], $plant_data['common_name']);
-        if ($nonunique_entry['id'] === 0 || $nonunique_entry['id'] === $_SESSION['id']) {
+
+        $diff_id = DiffIdCheck($nonunique_entry);
+
+        if (!$diff_id) {
             $dbEditCheck = editDBData($db, $plant_data);
             if ($dbEditCheck) {
                 header('Location: index.php?entry_edit_successful=1');

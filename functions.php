@@ -70,8 +70,8 @@ function getPlantType($db, string $id): array {
 function checkforUniqueAddEntry($db, string $science_name, string $common_name): array {
     $nonunique_entry_query = $db->prepare("SELECT `id` FROM `plants` WHERE `science_name` = ? OR `name` = ?;");
     $nonunique_entry_query->execute([$science_name, $common_name]);
-    $nonunique_entry = $nonunique_entry_query->fetch();
-    $nonunique_entry = !empty($nonunique_entry) ? $nonunique_entry : ['id' => 0];
+    $nonunique_entry = $nonunique_entry_query->fetchAll();
+    $nonunique_entry = !empty($nonunique_entry) ? $nonunique_entry : ['id' => [0]];
 
     return $nonunique_entry;
 }
@@ -125,6 +125,20 @@ function DBCheck(array $data): string {
             return '';
         }
     }
+}
+
+function DiffIdCheck(array $id_array): bool {
+    foreach($id_array as $entry) {
+        if ($entry === [0]) {
+            $diff_id = false;
+        } elseif ($entry['id'] === $_SESSION['id']) {
+            $diff_id = false;
+        } else {
+            $diff_id = true;
+        }
+    }
+
+    return $diff_id;
 }
 
 function makePlantEntryTile(array $entry): string {

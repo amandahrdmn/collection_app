@@ -10,17 +10,14 @@ if (empty($_POST['science_name']) || empty($_POST['common_name']) || empty($_POS
 
     $plantData = $_POST;
 
-    if ($nonunique_entry === [0]) {
+    if ($nonunique_entry['id'] === [0]) {
         $dbInsertCheck = insertDataToDB($db, $plantData);
         if ($dbInsertCheck) {
             header('Location: index.php?entry_add_successful=1');
         } else {
             header('Location: index.php?entry_add_error=2');
         }
-    } elseif ($nonunique_entry !== [0]) {
+    } elseif ($nonunique_entry['id'] !== [0]) {
         header('Location: addpage.php?entry_add_error=3');
     }
 }
-
-
-
