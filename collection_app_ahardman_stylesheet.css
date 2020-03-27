@@ -76,8 +76,8 @@ h2 {
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
-    width: 250px;
-    height: 340px;
+    width: 200px;
+    height: 290px;
     background-color: #c9d4f5;
     border-radius: 5px;
 }
@@ -85,8 +85,8 @@ h2 {
 img {
     object-fit: cover;
     margin-top: 10px;
-    height: 200px;
-    width: 200px;
+    height: 150px;
+    width: 150px;
 }
 
 .entry {
