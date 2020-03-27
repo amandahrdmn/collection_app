@@ -22,14 +22,14 @@ if (!empty($_GET['entry_edit_error'])) {
 <!doctype html>
 <html lang='en'>
 <head>
-    <title>collection_app_ahardman</title>
+    <title>collection_app_ahardman_editpage</title>
     <link href='normalize.css' rel='stylesheet' type='text/css'>
     <link href='collection_app_edit_entry_stylesheet.css' rel='stylesheet' type='text/css'>
     <meta name="viewport" content="width=device-width">
 </head>
 
 <?php echo $error_message ?>
-<section class= 'adding container'>
+<section class='adding container'>
     <h2>Edit Entry</h2>
     <form id='edit_entry' action="edit_check.php" method="POST" >
         <div class='label' for="science_name">Current Scientific Name:</div>

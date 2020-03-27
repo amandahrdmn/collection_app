@@ -18,7 +18,7 @@ if (!empty($_GET['entry_add_error'])) {
 </head>
 
 <?php echo $error_message ?>
-<section class= 'adding container'>
+<section class='adding container'>
     <h2>Add Entry</h2>
     <form id='add_entry' action="entry_check.php" method="POST" >
             <input required type="text" name="science_name" placeholder="Scientific Name">

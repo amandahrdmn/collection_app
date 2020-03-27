@@ -12,7 +12,7 @@ if (!empty($_GET['entry_delete_error'])) {
 <!doctype html>
 <html lang='en'>
 <head>
-    <title>collection_app_ahardman</title>
+    <title>collection_app_ahardman_deletepage</title>
     <link href='normalize.css' rel='stylesheet' type='text/css'>
     <link href='collection_app_delete_entry_stylesheet.css' rel='stylesheet' type='text/css'>
     <meta name="viewport" content="width=device-width">
@@ -20,7 +20,7 @@ if (!empty($_GET['entry_delete_error'])) {
 
 <?php echo $error_message ?>
 
-<section class= 'adding container'>
+<section class='adding container'>
     <h2>Are you sure you want to delete this entry?</h2>
     <?php echo removeTileButtons(makePlantEntryTile(getPlantDataForEntry(getDB(),$_POST['entry_number']))); ?>
     <form id='delete_entry' action="delete_check.php" method="POST" >

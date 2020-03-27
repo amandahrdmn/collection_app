@@ -171,7 +171,7 @@ function makePlantEntryTile(array $entry): string {
 
 function getPlantTypeOptions(array $plant_types): string {
     $return_string = '<option disable selected value class = \'styled_option\'></option>';
-    foreach ($plant_types as $type_option) {
+    foreach($plant_types as $type_option) {
         $return_string .= '<option class = \'styled_option\' value="' . $type_option['id'] . '">'
             . ucwords(strtolower($type_option['type']), '/ -')
             . '</option>';
