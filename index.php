@@ -7,6 +7,18 @@ if (!empty($_GET['entry_add_successful'])) {
     }
 }
 
+if (!empty($_GET['entry_edit_successful'])) {
+    if ($_GET['entry_edit_successful'] === '1') {
+        $add_entry_message = '<div class="add_entry_container">Entry update successful!</div>';
+    }
+}
+
+if (!empty($_GET['entry_delete_successful'])) {
+    if ($_GET['entry_delete_successful'] === '1') {
+        $add_entry_message = '<div class="add_entry_container">Entry deletion successful!</div>';
+    }
+}
+
 $plant_data = getPlantData(getDB());
 
 echo DBCheck($plant_data);
